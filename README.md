@@ -1,2 +1,101 @@
-# TELECOM_BILING_ANALYTICS_SYS
-A Java-based telecom billing system for managing customer subscriptions, tracking usage, generating monthly bills, and handling invoice payments through a console-based application.
+<a href="https://balajivs.me"><img src="https://github.com/Balaji-V-S/Balaji-V-S/blob/main/Github%20Readme%20watermark.png" align="right" width="140" /></a>
+
+# Telecom Billing & Analytics System 
+
+A lightweight **Java console application** that manages telecom customer billing, call usage tracking, and revenue analytics with secure role-based access control. Built for learning, quick deployments, and as a foundation for extending into a GUI or web service.
+
+---
+
+## Overview
+This project provides the core features required by a small telecom project:
+
+- Customer management (create, update, view)  
+- Call detail record (CDR) tracking and processing  
+- Bill generation (monthly invoicing) with configurable plans and rates  
+- Basic revenue and usage analytics (total revenue, top users, usage distribution)  
+- Secure role-based access (Admin, Manager, User) with permission checks  
+- Designed using clean separation of concerns (DAO, Service, UI, Models, Utilities)  
+
+---
+
+## ✨ Key Features
+- Console-driven menu with role-based options  
+- Normalized data storage (lightweight file-based or JDBC + MySQL option)  
+- Configurable tariff plans and discounts  
+- Reports: monthly revenue, top callers, average call duration  
+- Export bills to plain text or CSV  
+- Custom exceptions and robust input validation  
+
+---
+
+##  Tech Stack
+- **Language:** Java (8+ compatible)  
+- **Build:** Maven (or use simple `javac` + `java` for small setups)  
+- **Persistence:** Plain files / JDBC (MySQL) — pluggable DAO layer  
+- **Testing:** JUnit (recommended but optional)  
+
+---
+
+## 📁 Project Structure (suggested)
+```
+src/main/java/
+├─ models/ # POJOs: Customer, CallRecord, Bill, Tariff, User, Role
+├─ dao/ # Interfaces + implementations (FileDao, JdbcDao)
+├─ services/ # Business logic: BillingService, AnalyticsService, AuthService
+├─ ui/ # Console menus and input handling
+├─ util/ # Helpers: DateUtil, CsvExporter, InputValidator
+├─ exceptions/ # Custom exceptions
+└─ App.java # Main entry (bootstraps services and UI)
+```
+---
+
+##  Quick Start
+### Requirements
+- Java 8+ (JDK)  
+- Maven (optional, recommended for builds)  
+- MySQL (optional, only if using JDBC DAO)  
+
+### Run with Maven
+```bash
+# Build
+mvn clean package
+```
+# Run
+```
+java -jar target/telecom-billing-1.0.jar
+Run with javac/java (simple)
+```
+
+# compile
+```
+javac -d out $(find src -name "*.java")
+```
+# run
+```
+java -cp out com.yourpackage.App
+```
+## Roles & Permissions
+Admin: Full access (manage users, tariffs, run all reports)
+
+Manager: Access analytics, billing run, view and correct invoices
+
+User: View own usage and invoices
+
+Role checks should be enforced by AuthService and validated at each menu/action.
+
+---
+## Extensibility & Next Steps
+Add an HTTP REST API layer using Spring Boot
+
+Replace file storage with a proper RDBMS or embedded DB (H2)
+
+Add unit and integration tests for billing rules
+
+Add scheduled billing (cron-like) and email notifications
+
+Build a lightweight UI (JavaFX / web frontend)
+---
+## Contribution
+Contributions, bug reports, and suggestions are welcome. Please open an issue or submit a pull request with a clear description of the change and tests if applicable.
+
+
